@@ -2,10 +2,11 @@ require 'account'
 
 describe Account do
 
-  subject(:account) { described_class.new }
+  subject(:account) { described_class.new(transaction_class) }
 
   let(:transaction_class) { double :transaction_class, new: transaction }
   let(:transaction) { double :transaction }
+  let(:type) { double :transaction_type }
   let(:time) { double :time_class }
   let(:amount) { double :amount}
 
@@ -18,7 +19,7 @@ describe Account do
   describe '#deposit' do
 
     it 'creates a new credit transaction and pushes it to transactions ' do
-      account.deposit(amount, time, transaction_class)
+      account.deposit(amount, time)
       expect(account.transactions).to include transaction
     end
 
@@ -27,7 +28,7 @@ describe Account do
   describe '#withdraw' do
 
     it 'creates a new debit transaction and pushes it to transactions' do
-      account.withdraw(amount, time, transaction_class)
+      account.withdraw(amount, time)
       expect(account.transactions).to include transaction
     end
   end
