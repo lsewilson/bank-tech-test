@@ -2,7 +2,7 @@ class CreditTransaction
 
   attr_reader :time, :amount
 
-  def initialize(amount, time = Time.new)
+  def initialize(amount, time)
     @time = time
     @amount = amount
   end

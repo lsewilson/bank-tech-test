@@ -2,7 +2,7 @@ require 'debit_transaction'
 
 describe DebitTransaction do
 
-  subject(:transaction) { described_class.new(time, amount) }
+  subject(:transaction) { described_class.new(amount, time) }
   let(:time) { double :time_class}
   let(:amount) { double :amount }
 
