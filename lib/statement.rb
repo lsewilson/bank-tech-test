@@ -5,40 +5,41 @@ class Statement
     @balances = []
   end
 
-  attr_reader :balances
-
   def view(transactions)
-    puts header
-    transactions.each do |transaction|
-      date = transaction.time.strftime("%e/%m/%Y")
-      string = "#{date} || "
-      if transaction.type == :credit
-        string << "#{transaction.amount} || || "
-        if @balances.length > 0
-          @balances << @balances.last + transaction.amount
-        else
-          @balances << transaction.amount
-        end
-      elsif transaction.type == :debit
-        string << "|| #{transaction.amount} || "
-        if @balances.length > 0
-          @balances << @balances.last - transaction.amount
-        else
-          @balances << transaction.amount
-        end
-      end
-      string << "#{@balances.last}\n"
-      @entries << string
-    end
-    @entries.reverse.each do |entry|
-      puts entry
-    end
+    header
+    render_entries(transactions)
+    list_entries
   end
 
   private
 
   def header
-    "date || credit || debit || balance"
+    puts "date || credit || debit || balance"
+  end
+
+  def format_date(time)
+    time.strftime("%e/%m/%Y")
+  end
+
+  def render_entries(transactions)
+    transactions.each do |transaction|
+      date = format_date(transaction.time)
+      amount = transaction.amount
+      string = "#{date} || "
+      if transaction.type == :credit
+        string << "#{amount} || || "
+        @balances.length > 0 ? @balances << @balances.last + amount : @balances << amount
+      else
+        string << "|| #{amount} || "
+        @balances.length > 0 ? @balances << @balances.last - amount : @balances << amount
+      end
+      string << "#{@balances.last}"
+      @entries << string
+    end
+  end
+
+  def list_entries
+    @entries.reverse.each{|e| puts e}
   end
 
 end
