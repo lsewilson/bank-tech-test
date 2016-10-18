@@ -1,4 +1,4 @@
-#Bank Tech Test
+# Bank Tech Test
 
 This is my solution to the following tech test specification:
 
