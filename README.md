@@ -33,7 +33,7 @@ $ bundle
 $ rspec
 ```
 
-## Feature Test
+## How to Use in IRB (Feature Test)
 
 ```
 [15:16:39] bank-tech-test > irb
