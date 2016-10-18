@@ -1,4 +1,5 @@
 class Transaction
+# Understands properties of a transaction
 
   attr_reader :type, :time, :amount
 

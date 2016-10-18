@@ -1,5 +1,6 @@
 class Statement
-# Understands how to render transactions into a statement view
+# Understands how to render transaction history into a statement view
+
   def initialize
     @entries = []
     @balances = []
@@ -23,9 +24,8 @@ class Statement
 
   def render_entries(transactions)
     transactions.each do |transaction|
-      date = format_date(transaction.time)
       amount = transaction.amount
-      string = "#{date} || "
+      string = "#{format_date(transaction.time)} || "
       if transaction.type == :credit
         string << "#{amount} || || "
         @balances.length > 0 ? @balances << @balances.last + amount : @balances << amount

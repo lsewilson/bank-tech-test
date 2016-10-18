@@ -2,6 +2,7 @@ require_relative './transaction.rb'
 require_relative './statement.rb'
 
 class Account
+# Stores transaction history
 
   attr_reader :transactions, :balance
 
