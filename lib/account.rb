@@ -1,5 +1,6 @@
 require_relative './credit_transaction.rb'
 require_relative './debit_transaction.rb'
+require_relative './statement.rb'
 
 class Account
 

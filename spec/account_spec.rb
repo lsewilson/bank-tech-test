@@ -39,7 +39,7 @@ describe Account do
     it 'returns a statement summary' do
       allow(statement_class).to receive(:new)
       account.print_statement(statement_class)
-      expect(statement_class).to have_received(:new).with(account.transactionsac)
+      expect(statement_class).to have_received(:new).with(account.transactions)
     end
   end
 
