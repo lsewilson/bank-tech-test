@@ -31,16 +31,20 @@ describe Account do
       account.withdraw(amount, time)
       expect(account.transactions).to include transaction
     end
+
+    it 'pushes an updated balance to the balances array' do
+
+    end
   end
 
   describe '#print_statement' do
 
-    let(:statement_class) { double :statement_class }
+    let(:statement) { double :statement }
 
     it 'returns a statement summary' do
-      allow(statement_class).to receive(:new)
-      account.print_statement(statement_class)
-      expect(statement_class).to have_received(:new).with(account.transactions)
+      allow(statement).to receive(:view)
+      account.print_statement(statement)
+      expect(statement).to have_received(:view).with(account.transactions)
     end
   end
 

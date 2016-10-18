@@ -3,7 +3,7 @@ require_relative './statement.rb'
 
 class Account
 
-  attr_reader :transactions
+  attr_reader :transactions, :balance
 
   def initialize(transaction_class = Transaction)
     @transaction_class = transaction_class
@@ -18,8 +18,8 @@ class Account
     @transactions << @transaction_class.new(:debit, amount, time)
   end
 
-  def print_statement(statement_class = Statement)
-    statement_class.new(@transactions)
+  def print_statement(statement = Statement.new)
+    statement.view(@transactions)
   end
 
 end
